@@ -116,3 +116,16 @@ market_summary <- clean_data %>%
   mutate(percentage = count / sum(count) * 100)
 
 print(market_summary)
+
+# 12. Key Numerical Metrics by Booking Status
+numeric_summary <- clean_data %>% 
+  group_by(booking_status) %>% 
+  summarise(
+    avg_lead_time = mean(lead_time, na.rm = TRUE),
+    median_lead_time = median(lead_time, na.rm = TRUE),
+    avg_price = mean(average_price, na.rm = TRUE),
+    count = n(),
+    .groups = "drop"
+  )
+
+print(numeric_summary)
