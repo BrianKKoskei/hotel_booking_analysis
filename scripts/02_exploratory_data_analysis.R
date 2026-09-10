@@ -104,3 +104,15 @@ room_summary <- clean_data %>%
   mutate(percentage = count / sum(count) * 100)
 
 print(room_summary)
+
+# 11. Market Segment Type vs Booking Status
+market_summary <- clean_data %>% 
+  group_by(market_segment_type, booking_status) %>% 
+  summarise(
+    count = n(),
+    .groups = "drop"
+  ) %>% 
+  group_by(market_segment_type) %>% 
+  mutate(percentage = count / sum(count) * 100)
+
+print(market_summary)
