@@ -142,3 +142,16 @@ p_leadtime <- ggplot(clean_data, aes(x = booking_status, y = lead_time, fill = b
   theme(legend.position = "none")
 
 print(p_leadtime)
+
+# 14. Boxplot: Average Price Distribution by Booking Status
+p_price <- ggplot(clean_data, aes(x = booking_status, y = average_price, fill = booking_status)) +
+  geom_boxplot(alpha = 0.7, outlier.alpha = 0.2) +
+  theme_minimal() +
+  labs(
+    title = "Average Price Distribution by Booking Status",
+    x = "Booking Status",
+    y = "Average Price (€)"
+  ) +
+  theme(legend.position = "none")
+
+print(p_price)
