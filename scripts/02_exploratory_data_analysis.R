@@ -80,3 +80,15 @@ parking_summary <- clean_data %>%
   mutate(percentage = count / sum(count) * 100)
 
 print(parking_summary)
+
+# 9. Repeated Guest Status vs Booking Status
+repeated_summary <- clean_data %>% 
+  group_by(repeated, booking_status) %>% 
+  summarise(
+    count = n(),
+    .groups = "drop"
+  ) %>% 
+  group_by(repeated) %>% 
+  mutate(percentage = count / sum(count) * 100)
+
+print(repeated_summary)
