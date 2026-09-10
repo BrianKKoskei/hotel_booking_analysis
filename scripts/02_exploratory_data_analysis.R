@@ -129,3 +129,16 @@ numeric_summary <- clean_data %>%
   )
 
 print(numeric_summary)
+
+# 13. Boxplot: Lead Time Distribution by Booking Status
+p_leadtime <- ggplot(clean_data, aes(x = booking_status, y = lead_time, fill = booking_status)) +
+  geom_boxplot(alpha = 0.7, outlier.alpha = 0.2) +
+  theme_minimal() +
+  labs(
+    title = "Lead Time Distribution by Booking Status",
+    x = "Booking Status",
+    y = "Lead Time (Days)"
+  ) +
+  theme(legend.position = "none")
+
+print(p_leadtime)
