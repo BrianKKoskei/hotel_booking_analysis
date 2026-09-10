@@ -92,3 +92,15 @@ repeated_summary <- clean_data %>%
   mutate(percentage = count / sum(count) * 100)
 
 print(repeated_summary)
+
+# 10. Room Type vs Booking Status
+room_summary <- clean_data %>% 
+  group_by(room_type, booking_status) %>% 
+  summarise(
+    count = n(),
+    .groups = "drop"
+  ) %>% 
+  group_by(room_type) %>% 
+  mutate(percentage = count / sum(count) * 100)
+
+print(room_summary)
