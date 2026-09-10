@@ -68,3 +68,15 @@ ggplot(clean_data, aes(x = factor(special_requests), fill = booking_status)) +
     x = "Number of Special Requests",
     y = "Proportion"
   )
+
+# 8. Parking Space Requirements vs Booking Status
+parking_summary <- clean_data %>% 
+  group_by(car_parking_space, booking_status) %>% 
+  summarise(
+    count = n(),
+    .groups = "drop"
+  ) %>% 
+  group_by(car_parking_space) %>% 
+  mutate(percentage = count / sum(count) * 100)
+
+print(parking_summary)
